@@ -1,10 +1,10 @@
 angular.module('starter.services', [])
 
-  .service('constants', function () {
-    var deviceInfo = ionic.Platform.device()
+  .service('constants', function ($location) {
+    var host = $location.host()
     var mobile = ionic.Platform.isIOS() || ionic.Platform.isAndroid()
-    if (mobile) {
-      this.APIURL = 'http://orrange.herokuapp.com'
+    if (mobile || host !== 'localhost') {
+      this.APIURL = 'https://orrange.herokuapp.com'
     }
     this.APIURL = 'http://localhost:1337'
     console.log('APIURL', this.APIURL)
