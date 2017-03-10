@@ -1,0 +1,94 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+.orrange {
+
+}
+
+.item .item-content {
+  background: transparent;
+}
+
+.song {
+  .segment-chords {
+    background: transparent;
+    word-spacing: 2em;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 5%;
+    width: 90%;
+  }
+
+  .segment-label {
+    background: transparent;
+    border: none;
+    //border-bottom: 2px solid gray;
+    //border-radius: 5%;
+    font-size: 1.2em;
+  }
+  //.focused {
+  //  word-spacing: 1.5em;
+  //  font-size: 2em;
+  //}
+
+}
+
+.Intro {
+  background: #bbdefb !important;
+}
+
+.Verse {
+  background: #e1bee7 !important;
+}
+
+.Chorus {
+  background: #c8e6c9 !important;
+}
+
+.Bridge {
+  background: #ffcdd2 !important;
+}
+
+.Tag {
+  background: #ffecb3 !important;
+}
+
+.Instrumental {
+  background: #cfd8dc !important;
+}
+
+.list {
+  .segment {
+
+  }
+  .segment-label {
+    font-size: 0.8em;
+  }
+  .segment-chords {
+    word-spacing: 2em;
+
+  }
+}
+
+
+
+

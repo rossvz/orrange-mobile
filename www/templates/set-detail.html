@@ -1,0 +1,32 @@
+<ion-view>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-arrow-left-a" ui-sref="tab.setlist"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="song in ctrl.set.songs" ng-click="ctrl.toggleExpandSong(song)">
+                {{ song.title }}
+                <ion-list ng-show="song.expand">
+                    <ion-item ng-repeat="seg in song.segments" class="segment" ng-class="seg.label">
+                        <span class="segment-label">{{ seg.label }}</span>
+                        <div class="row segment-chords-container">
+                            <div class="col col-75">
+                                <span class="segment-chords">{{ seg.chords }}</span>
+
+                            </div>
+                            <div class="col col-25" style="word-wrap: break-word">
+                                {{ seg.notes }}
+                            </div>
+                        </div>
+                    </ion-item>
+                </ion-list>
+                <ion-option-button
+                        ng-click="ctrl.removeSongFromSet(ctrl.set,song,$index)">Delete
+                </ion-option-button>
+            </ion-item>
+            <ion-item>
+                <button class="button" ng-click="ctrl.addSongToSet(ctrl.set)">Add Song to Set</button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

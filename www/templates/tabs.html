@@ -1,0 +1,25 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+    <!-- Setlist Tab -->
+    <ion-tab title="Setlists" icon-off="ion-ios-list-outline" icon-on="ion-ios-list" href="#/tab/setlist">
+        <ion-nav-view name="tab-setlist"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Song Tab -->
+    <ion-tab title="Add Song" icon-off="ion-ios-plus-empty" icon-on="ion-plus-circled" href="#/tab/song">
+        <ion-nav-view name="tab-song"></ion-nav-view>
+    </ion-tab>
+
+
+    <!-- Song List Tab -->
+    <ion-tab title="All Songs" icon-off="ion-ios-albums-outline" icon-on="ion-ios-albums" href="#/tab/list">
+        <ion-nav-view name="tab-list"></ion-nav-view>
+    </ion-tab>
+
+
+</ion-tabs>

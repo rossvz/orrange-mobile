@@ -1,0 +1,16 @@
+<ion-view view-title="Setlists">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="set in ctrl.sets" ng-click="ctrl.goToSet(set)">
+                <span>{{ set.name }} | {{ set.date }}</span>
+                <ion-option-button
+                        ng-click="ctrl.removeSet(set,$index)">Delete
+                </ion-option-button>
+            </ion-item>
+            <ion-item>
+                <button ng-click="ctrl.addNewSet()">Add New Set</button>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+</ion-view>

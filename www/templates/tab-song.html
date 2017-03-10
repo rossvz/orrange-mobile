@@ -1,0 +1,56 @@
+<ion-view view-title="Orrange" class="orrange">
+    <ion-content class="padding">
+        <ion-list class="song">
+            <h3>Create Song</h3>
+            <div class="list">
+                <div class="item item-divider">
+                    Song Info
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">Title</span>
+                    <input type="text" ng-model="ctrl.song.title">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">BPM</span>
+                    <input type="number" ng-model="ctrl.song.bpm">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Key</span>
+                    <input type="text" ng-model="ctrl.song.key">
+                </label>
+
+
+            </div>
+            <div class="item item-divider">
+                Sections
+            </div>
+            <ion-list>
+                <ion-item ng-repeat="seg in ctrl.song.segments"
+                          ng-class="seg.label">
+                    <div class="row">
+                        <div class="col col-75"><select ng-options="label for label in ctrl.segmentLabels"
+                                                        ng-model="seg.label"
+                                                        class="item-label segment-label">
+                        </select>
+                            <input type="text" ng-model="seg.chords" class="segment-chords"
+                                   ng-change="ctrl.focusSegment($index)" ng-class="{focused:seg.focused}">
+
+
+                        </div>
+                        <div class="col col-25">
+                            <textarea type="text" rows="4" placeholder="Notes" ng-model="seg.notes"></textarea>
+                        </div>
+                    </div>
+
+                    <ion-option-button ng-click="ctrl.up(seg,$index)" class="icon ion-ios-arrow-up"></ion-option-button>
+                    <ion-option-button ng-click="ctrl.down(seg,$index)"
+                                       class="icon ion-ios-arrow-down"></ion-option-button>
+                </ion-item>
+
+            </ion-list>
+            <button class="button button-block icon ion-ios-plus" ng-click="ctrl.addSegment()">Add Section</button>
+            <button class="button button-balanced" ng-click="ctrl.create(song)">Save</button>
+    </ion-content>
+</ion-view>

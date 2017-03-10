@@ -1,0 +1,19 @@
+<ion-view view-title="Song List">
+    <ion-content>
+        <div class="list">
+            <ion-list>
+                <ion-item ng-repeat="song in ctrl.songs" ng-click="ctrl.toggleExpand(song)">
+                    {{ song.title }}
+                    <ion-list ng-show="song.expand">
+                        <ion-item ng-repeat="seg in song.segments" class="segment" ng-class="seg.label">
+                            <span class="segment-label">{{ seg.label }}</span>
+                            <div class="segment-chords-container">
+                                <span class="segment-chords">{{ seg.chords }}</span>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>
