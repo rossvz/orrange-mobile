@@ -35,6 +35,7 @@ angular.module('starter.controllers', [])
     this.update = function (song) {
       songs.update(song).then(function (res) {
         console.log(res)
+        me.song = reset()
         $state.go('tab.list')
       })
     }
