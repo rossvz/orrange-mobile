@@ -43,6 +43,7 @@ angular.module('starter.controllers', [])
     this.segmentLabels = [
       'Intro',
       'Verse',
+      'Pre-Chorus',
       'Chorus',
       'Bridge',
       'Tag',
