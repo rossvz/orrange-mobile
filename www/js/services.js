@@ -5,8 +5,10 @@ angular.module('starter.services', [])
     var mobile = ionic.Platform.isIOS() || ionic.Platform.isAndroid()
     if (mobile || host !== 'localhost') {
       this.APIURL = 'https://orrange.herokuapp.com'
+    } else {
+      this.APIURL = 'http://localhost:1337'
+
     }
-    this.APIURL = 'http://localhost:1337'
     console.log('APIURL', this.APIURL)
   })
 
