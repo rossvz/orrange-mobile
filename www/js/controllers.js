@@ -2,6 +2,7 @@ angular.module('starter.controllers', [])
 
   .controller('SongsCtrl', function ($scope, songs, $timeout, $state) {
     var me = this
+    this.reset = reset
     this.reorder = false
 
     function reset () {
