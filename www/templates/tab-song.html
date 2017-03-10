@@ -51,6 +51,10 @@
 
             </ion-list>
             <button class="button button-block icon ion-ios-plus" ng-click="ctrl.addSegment()">Add Section</button>
-            <button class="button button-balanced" ng-click="ctrl.create(song)">Save</button>
+            <button class="button button-balanced" ng-if="!ctrl.song.id" ng-click="ctrl.create(ctrl.song)">Save</button>
+            <button class="button button-energized" ng-if="ctrl.song.id" ng-click="ctrl.update(ctrl.song)">Update
+            </button>
+            <button class="button button-assertive" ng-if="ctrl.song.id" ng-click="ctrl.delete(ctrl.song)">Delete
+            </button>
     </ion-content>
 </ion-view>

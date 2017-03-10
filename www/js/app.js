@@ -26,6 +26,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       })
 
       .state('tab.song', {
+        cache: false,
         url: '/song',
         views: {
           'tab-song': {
@@ -36,6 +37,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       })
 
       .state('tab.list', {
+        cache: false,
         url: '/list',
         views: {
           'tab-list': {

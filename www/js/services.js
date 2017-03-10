@@ -12,10 +12,14 @@ angular.module('starter.services', [])
 
   .service('songs', function (constants, $http, $q) {
     var me = this
+    this.currentSong = {}
     me.get = function () {
       var url = constants.APIURL + '/song'
       return $http.get(url).then(function (res) {
-        me.allsongs = res.data
+        me.allsongs = res.data.map(function (song) {
+          song.expand = false
+          return song
+        })
       })
     }
     me.getSongByName = function (name) {
@@ -38,11 +42,11 @@ angular.module('starter.services', [])
       return $http.post(url, song)
     }
     me.update = function (song) {
-      var url = constants.APIURL + '/song/' + song._id
+      var url = constants.APIURL + '/song/' + song.id
       return $http.put(url, song)
     }
     me.delete = function (song) {
-      var url = constants.APIURL + '/song/' + song._id
+      var url = constants.APIURL + '/song/' + song.id
       return $http.delete(url, song)
     }
     me.fuzzySearchByName = function (name) {

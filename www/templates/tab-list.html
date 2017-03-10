@@ -1,19 +1,24 @@
 <ion-view view-title="Song List">
     <ion-content>
-        <div class="list">
-            <ion-list>
-                <ion-item ng-repeat="song in ctrl.songs" ng-click="ctrl.toggleExpand(song)">
-                    {{ song.title }}
-                    <ion-list ng-show="song.expand">
-                        <ion-item ng-repeat="seg in song.segments" class="segment" ng-class="seg.label">
-                            <span class="segment-label">{{ seg.label }}</span>
-                            <div class="segment-chords-container">
-                                <span class="segment-chords">{{ seg.chords }}</span>
-                            </div>
-                        </ion-item>
-                    </ion-list>
-                </ion-item>
-            </ion-list>
-        </div>
+
+        <ion-list>
+            <label class="item item-input">
+                <input type="text" placeholder="" ng-model="search">
+            </label>
+            <ion-item ng-repeat="song in ctrl.songs | filter:search | orderBy:'title'"
+                      ng-click="ctrl.toggleExpand(song)"
+                      class="item-button-right">
+                {{ song.title }}
+                <button class="button icon ion-edit" ng-click="ctrl.editSong(song)"></button>
+                <ion-list ng-show="song.expand">
+                    <ion-item ng-repeat="seg in song.segments" class="segment" ng-class="seg.label">
+                        <span class="segment-label">{{ seg.label }}</span>
+                        <div class="segment-chords-container">
+                            <span class="segment-chords">{{ seg.chords }}</span>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>

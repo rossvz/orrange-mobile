@@ -1,11 +1,11 @@
 angular.module('starter.controllers', [])
 
-  .controller('SongsCtrl', function ($scope, songs, $timeout) {
+  .controller('SongsCtrl', function ($scope, songs, $timeout, $state) {
     var me = this
     this.reorder = false
 
     function reset () {
-      me.song = {
+      return {
         title: '',
         bpm: 0,
         key: '',
@@ -16,6 +16,13 @@ angular.module('starter.controllers', [])
       }
     }
 
+    if (angular.equals(songs.currentSong, {})) {
+      me.song = reset()
+    } else {
+      me.song = songs.currentSong
+    }
+
+
     this.up = function (seg, i) {
       me.song.segments.splice(i, 1)
       me.song.segments.splice(i - 1, 0, seg)
@@ -25,18 +32,11 @@ angular.module('starter.controllers', [])
       me.song.segments.splice(i + 1, 0, seg)
     }
 
-    this.moveSegment = function (seg, from, to) {
-      console.log('moving from ', from, 'to ', to)
-      me.song.segments.splice(from, 1)
-      me.song.segments.splice(to, 0, seg)
-    }
-
-    this.focusSegment = function (i) {
-      me.song.segments[i].focused = true
-      $timeout(function () {
-        me.song.segments[i].focused = false
-
-      }, 3000)
+    this.update = function (song) {
+      songs.update(song).then(function (res) {
+        console.log(res)
+        $state.go('tab.list')
+      })
     }
 
     this.segmentLabels = [
@@ -59,13 +59,20 @@ angular.module('starter.controllers', [])
     this.create = function () {
       songs.create(this.song).then(function (res) {
         console.log(res)
-        reset()
+        me.song = reset()
       })
     }
-    reset()
+
+    this.delete = function (song) {
+      songs.delete(song).then(function (res) {
+        console.log(res)
+        me.song = reset()
+        $state.go('tab.list')
+      })
+    }
   })
 
-  .controller('ListCtrl', function ($scope, songs) {
+  .controller('ListCtrl', function ($scope, songs, $state) {
     var me = this
     songs.get().then(function (res) {
       me.songs = songs.allsongs
@@ -73,6 +80,11 @@ angular.module('starter.controllers', [])
 
     this.toggleExpand = function (song) {
       song.expand = !song.expand
+    }
+
+    this.editSong = function (song) {
+      songs.currentSong = song
+      $state.go('tab.song')
     }
   })
 
